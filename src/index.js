@@ -6,9 +6,13 @@ const port = 3000;
 const morgan = require('morgan');
 const { engine } = require('express-handlebars');
 const route = require('./routes');
+const db = require('./config/db');
 
 // Use public files
 app.use(express.static(path.join(__dirname, '/public')));
+
+// Connect db
+db.connect();
 
 app.use(
     express.urlencoded({
