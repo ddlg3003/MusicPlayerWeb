@@ -11,7 +11,7 @@ const Song = new Schema(
         name: { type: String },
         singer: { type: String },
         image: { type: String },
-        source: { type: Object },
+        path: { type: String },
     },
     {
         timestamps: true,

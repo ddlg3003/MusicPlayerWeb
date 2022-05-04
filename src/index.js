@@ -7,6 +7,13 @@ const morgan = require('morgan');
 const { engine } = require('express-handlebars');
 const route = require('./routes');
 const db = require('./config/db');
+const cors = require('cors');
+
+app.use(
+    cors({
+        origin: "*"
+    })
+);
 
 // Use public files
 app.use(express.static(path.join(__dirname, '/public')));

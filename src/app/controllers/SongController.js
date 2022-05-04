@@ -5,11 +5,6 @@ class SongController {
     add(req, res) {
         
     }
-
-    // [POST] /song/done
-    done(req, res) {
-
-    }
 }
 
 module.exports = new SongController();
