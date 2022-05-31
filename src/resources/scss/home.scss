@@ -1,0 +1,42 @@
+@import "header";
+@import "nav";
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #f9fafe !important;
+}
+
+.content {
+    margin-top: 46px;
+    margin-left: 200px;
+}
+
+.music-list-text {
+    padding-top: 40px;
+    padding-left: 20px;
+}
+
+.song-list {
+    padding-left: 0px;
+    padding-right: 0px;
+}
+
+.song-card a {
+    color: #000;
+}
+
+.song-card a:hover {
+    color: #000;
+    text-decoration: none;
+}
+
+.song-card .card:hover {
+    background-color: #e5e5e5;
+}
+
+
