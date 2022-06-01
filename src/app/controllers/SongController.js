@@ -14,6 +14,7 @@ class SongController {
                     song: mongooseToObject(song),
                 })
             })
+            .catch(next);
     }
 
     // [GET] /song/add

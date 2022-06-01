@@ -1,0 +1,32 @@
+.header {
+  height: 46px;
+  background-color: transparent;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1; }
+
+.login-button {
+  background-color: #FF5C8D;
+  border: none;
+  color: white;
+  padding: 5px 20px;
+  text-align: center;
+  font-size: 14px;
+  float: right;
+  border-radius: 16px;
+  margin-top: 6px;
+  margin-right: 12px;
+  display: inline-block; }
+
+.login-button:hover {
+  background-color: #da3b6a;
+  color: #d5d5d5;
+  text-decoration: wavy; }
+
+.search-bar {
+  width: 300px;
+  height: 46px;
+  display: inline-block;
+  margin-left: 40%; }

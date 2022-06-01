@@ -1,29 +1,29 @@
-<div class="player">
+<div class="detail-player">
 <!-- Dashboard -->
-<div class="dashboard">
+<div class="detail-dashboard">
     <!-- Header -->
-    <header>
-        <h2>{{song.name}} 
-            <span class="option">
+    <header class="detail-header">
+        <h2 class="detail-header-2">{{song.name}} 
+            <span class="detail-option">
                 <i style="padding-left:12px; opacity: 0.5" class="fas fa-ellipsis-h"></i>
             </span>
         </h2>
-        <h4>{{song.singer}}</h4>
+        <h4 class="detail-header-4">{{song.singer}}</h4>
     </header>
     <!-- Content -->
-    <div class="song-properties">
+    <div class="detail-song-properties">
         <!-- CD -->
-        <div class="cd-thumb" style="background-image: url('{{song.image}}')">
+        <div class="detail-cd-thumb" style="background-image: url('{{song.image}}')">
         </div>
         {{!-- control --}}
-        <div class="control">
-            <div class="btn btn-toggle-play">
+        <div class="detail-control">
+            <div class="btn detail-btn-toggle-play">
                 <i class="fas fa-pause icon-pause"></i>
                 <i class="fas fa-play icon-play"></i>
             </div>
         </div>
-        <input id="progress" class="progress-music" type="range" value="0" step="1" min="0" max="100">
-        <audio id="audio" src="https://docs.google.com/uc?export=download&id={{song.path}}"></audio>
+        <input id="detail-progress" class="detail-progress-music" type="range" value="0" step="1" min="0" max="100">
+        <audio id="detail-audio" src="https://docs.google.com/uc?export=download&id={{song.path}}"></audio>
     </div>
 </div>
 <script src="/javascript/detail.js"></script>

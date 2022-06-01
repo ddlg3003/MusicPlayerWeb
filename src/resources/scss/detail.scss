@@ -3,24 +3,24 @@
     --text-color: #000;
 }
 
-.player {
+.detail-player {
     position: relative;
 
 }
 
-.player .icon-pause {
+.detail-player .icon-pause {
     display: none;
 }
 
-.player.playing .icon-pause {
+.detail-player.playing .icon-pause {
     display: inline-block;
 }
 
-.player.playing .icon-play {
+.detail-player.playing .icon-play {
     display: none;
 }
 
-.dashboard {
+.detail-dashboard {
     padding: 16px 16px 14px;
     background-color: #fff;
     position: fixed;
@@ -34,19 +34,19 @@
 }
 
 /* HEADER */
-header {
+.detail-header {
     text-align: left;
     margin-bottom: 10px;
 }
 
-header h4 {
+.detail-header-4 {
     color: (--primary-color);
     font-size: 16px;
     padding-left: 1px;
     margin-left: 80px;
 }
 
-header h2 {
+.detail-header-2 {
     color: var(--text-color);
     font-size: 24px;
     font-weight: 700;
@@ -54,13 +54,13 @@ header h2 {
 }
 
 /* CD */
-.song-properties {
+.detail-song-properties {
     width: 1000px;
     display: flex;
     margin-left: 80px;
 }
 
-.cd-thumb {
+.detail-cd-thumb {
     width: 20%;
     padding-top: 20%;
     border-radius: 50%;
@@ -69,22 +69,22 @@ header h2 {
 }
 
 /* CONTROL */
-.control {
+.detail-control {
     display: inline-block;
     padding: 72px 0 8px 80px;
 }
 
-.control .btn {
+.detail-control .btn {
     color: #666;
     padding: 18px;
     font-size: 18px;
 }
 
-.control .btn.active {
+.detail-control .btn.active {
     color: var(--primary-color);
 }
 
-.control .btn-toggle-play {
+.detail-control .detail-btn-toggle-play {
     width: 56px;
     height: 56px;
     border-radius: 50%;
@@ -96,7 +96,7 @@ header h2 {
     background-color: var(--primary-color);
 }
 
-.progress-music {
+.detail-progress-music {
     margin: 96px 0 8px 90px;
     width: 40%;
     -webkit-appearance: none;
@@ -107,7 +107,7 @@ header h2 {
     transition: opacity 0.2s;
 }
 
-.progress-music::-webkit-slider-thumb {
+.detail-progress-music::-webkit-slider-thumb {
     -webkit-appearance: none;
     appearance: none;
     width: 16px;
@@ -117,7 +117,7 @@ header h2 {
     cursor: pointer;
 }
 
-.option:hover {
+.detail-option:hover {
     cursor: pointer;
 }
   

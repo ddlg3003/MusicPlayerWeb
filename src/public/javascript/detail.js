@@ -1,11 +1,11 @@
 const $ = document.querySelector.bind(document);
 const $$ = document.querySelectorAll.bind(document);
 
-const cdThumb = $('.cd-thumb');
-const playBtn = $('.btn-toggle-play');
-const progress = $('#progress');
-const audio = $('#audio');
-const player = $('.player');
+const cdThumb = $('.detail-cd-thumb');
+const playBtn = $('.detail-btn-toggle-play');
+const progress = $('#detail-progress');
+const audio = $('#detail-audio');
+const player = $('.detail-player');
 
 let isPlaying = false;
 
