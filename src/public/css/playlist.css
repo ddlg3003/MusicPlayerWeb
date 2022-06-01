@@ -60,8 +60,7 @@ header h2 {
 .control {
   display: flex;
   align-items: center;
-  justify-content: space-around;
-  padding: 18px 0 8px 0; }
+  padding: 18px 0 8px 274px; }
 
 .control .btn {
   color: #666;
@@ -83,7 +82,8 @@ header h2 {
   background-color: var(--primary-color); }
 
 .progress-music {
-  width: 100%;
+  margin-left: 80px;
+  width: 80%;
   -webkit-appearance: none;
   height: 6px;
   background: #d3d3d3;
