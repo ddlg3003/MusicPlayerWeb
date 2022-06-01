@@ -1,19 +1,21 @@
 <div class="music-list-text">
-    <h3>New Songs</h3>
+    <h3>Songs for you</h3>
 </div>
 <div class="song-list">
     <div class="container-fluid">
         <div class="row">
+        {{#each songs}}
             <div class="song-card col-sm-2 mt-3">
-                <a href="/">
+                <a href="/songs/{{this._id}}">
                     <div class="card" style="width: 12rem;">
-                        <img src="https://i1.sndcdn.com/artworks-000540501804-smo4vk-t500x500.jpg" class="card-img-top" alt="...">
+                        <img src="{{this.image}}" class="card-img-top" alt="...">
                         <div class="card-body">
-                            <p class="card-text">Bài này chill phết</p>
+                            <p class="card-text">{{this.name}}</p>
                         </div>
                     </div>                
                 </a>
             </div>                      
+        {{/each}}
         </div>
     </div>
 </div>
