@@ -23,7 +23,7 @@
   padding: 16px 16px 14px;
   background-color: #fff;
   position: fixed;
-  top: 80px;
+  top: 150px;
   width: 100%;
   max-width: 850px;
   border-bottom: 1px solid #ebebeb;
@@ -33,6 +33,12 @@
 header {
   text-align: center;
   margin-bottom: 10px; }
+
+.playlist-title {
+  position: fixed;
+  top: 54px;
+  font-size: 60px;
+  font-weight: 700; }
 
 header h4 {
   color: var(--primary-color);
@@ -49,8 +55,8 @@ header h2 {
   width: 200px; }
 
 .cd-thumb {
-  width: 100%;
-  padding-top: 100%;
+  width: 80%;
+  padding-top: 80%;
   border-radius: 50%;
   background-color: #333;
   background-size: cover;
@@ -102,7 +108,7 @@ header h2 {
 
 /* PLAYLIST */
 .playlist {
-  margin-top: 445px;
+  margin-top: 464px;
   padding: 12px;
   width: 850px; }
 

@@ -9,21 +9,15 @@ const {
 class MeController {
     // [GET] /me/library
     library(req, res, next) {
-        Playlist.find()
-            .then(playlists => {
-                playlists = multipleMongooseToObject(playlists);
-                res.render('me/library', {
-                    playlists,
-                });
-            })
-            .catch(next);
+        res.render('me/library');
     }
 
     // [GET] /playlist/:id
     playlist(req, res, next) {
         Playlist.findOne({_id: req.params.id})
             .then(playlist => {
-                res.render('me/playlist');
+                playlist = mongooseToObject(playlist);
+                res.render('me/playlist', {playlist});
             })
             .catch(next);
     }

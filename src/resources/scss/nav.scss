@@ -54,23 +54,14 @@
     text-align: left;
     height: 40px;
     line-height: 40px;
-    margin: 12px 12px 0px 12px;
-}
-
-.quick-playlist-cre-btn a {
-    color: #000;
-    text-decoration: none;
-    font-weight: 600;
-    height: 40px;
+    margin: 12px 0px 0px 12px;
     padding-left: 32px;
+    font-weight: 600;
+    border: none;
+    background: none;
+    padding-right: 24px;
 }
 
 .quick-playlist-cre-btn:hover {
     background-color: #E3E3E3;
-    cursor: pointer;
-}
-
-.quick-playlist-cre-btn a:hover {
-    color: #000;
-    text-decoration: none;
 }

@@ -3,19 +3,8 @@
 </div>
 <div class="song-list">
     <div class="container-fluid">
-        <div class="row">
-            {{#each playlists}}           
-            <div class="song-card col-sm-2 mt-3">
-                <a href="/me/playlist/{{this._id}}">
-                    <div class="card" style="width: 12rem;">
-                        <img src="{{this.image}}" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <p class="card-text">{{this.name}}</p>
-                        </div>
-                    </div>                
-                </a>
-            </div>
-            {{/each}}                  
+        <div class="row playlist-container">
+                             
         </div>
     </div>
 </div>

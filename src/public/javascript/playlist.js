@@ -272,7 +272,9 @@ fetch(playlistApi)
                 repeatBtn.classList.toggle('active', this.isRepeat);
             },
         };
-
-        app.start();
+        
+        if (data.length > 0) {
+            app.start();
+        }
     })
     .catch(error => console.log(error));
