@@ -42,7 +42,7 @@ function handleCreateForm() {
         modal.classList.remove('open');
         
         if (window.location.href === 'http://localhost:3000/me/library')
-            renderPlaylist();
+            window.location.reload();
     });
 }
 
@@ -53,14 +53,15 @@ function renderPlaylist() {
         const htmls = data.playlists.map((playlist, index) => {
             return `            
             <div class="song-card col-sm-2 mt-3">
-                <a href="/me/playlist/${playlist._id}">
-                    <div class="card" style="width: 12rem;">
+                <div class="card" style="width: 12rem;">
+                    <button data-id="${playlist._id}" class="del-playlist"><i class="fa-solid fa-xmark"></i></button>
+                    <a href="/me/playlist/${playlist._id}">
                         <img src="${playlist.image}" class="card-img-top" alt="...">
                         <div class="card-body">
                             <p class="card-text">${playlist.name}</p>
                         </div>
-                    </div>                
-                </a>
+                    </a>
+                </div>                
             </div>`;
         })
 
@@ -71,7 +72,56 @@ function renderPlaylist() {
 
 if (window.location.href === 'http://localhost:3000/me/library') {
     renderPlaylist();
+
+    window.addEventListener('load', () => {
+        // Delete handler
+        let delOpenBtns = document.getElementsByClassName('del-playlist');
+        const delModal = document.querySelector('.modal-delete');
+        const delCloseBtn = document.querySelector('.modal-delete-close');
+        const cancelBtn = document.querySelector('#cancel');
+        const delBtn = document.querySelector('#delete-list');
+        
+        function showDelModal() {
+            delModal.classList.add('del-open');
+        }
+
+        function closeDelModal() {
+            delModal.classList.remove('del-open');
+        }
+
+        function delPlaylist(api) {
+            const options = {
+                method: 'DELETE',
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            };
+            
+            fetch(api, options)
+            .then(response => response.json())
+            .catch(error => console.log(error));
+        }
+
+        console.log(delOpenBtns);
+
+        for(const delOpenBtn of delOpenBtns) {
+            const id = delOpenBtn.getAttribute('data-id');
+            delOpenBtn.addEventListener('click', () => {
+                showDelModal();
+                const delApi = `http://localhost:3000/playlist/${id}`;
+                delBtn.addEventListener('click', () => {
+                    delPlaylist(delApi);
+                    closeDelModal();
+                    window.location.reload();
+                });
+            });
+        }
+
+        cancelBtn.addEventListener('click', closeDelModal);
+
+        delCloseBtn.addEventListener('click', closeDelModal);
+    }
+  )
 }
 
 handleCreateForm();
-

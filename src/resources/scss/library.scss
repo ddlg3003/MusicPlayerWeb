@@ -1,43 +1,4 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-body {
-    background: #f9fafe !important;
-}
-
-.content {
-    margin-top: 46px;
-    margin-left: 212px;
-    position: relative;
-}
-
-.music-list-text {
-    padding-top: 40px;
-    padding-left: 20px;
-}
-
-.song-list {
-    padding-left: 0px;
-    padding-right: 0px;
-}
-
-.song-card a {
-    color: #000;
-}
-
-.song-card a:hover {
-    color: #000;
-    text-decoration: none;
-}
-
-.song-card .card:hover {
-    background-color: #e5e5e5;
-}
-
-.modal-create {
+.modal-delete {
     position: fixed;
     top: 0;
     left: 0;
@@ -50,11 +11,11 @@ body {
     justify-content: center;
 }
 
-.open {
+.del-open {
     display: flex;
 }
 
-.modal-create-container {
+.modal-delete-container {
     background: #FFF;
     width: 300px;
     height: 200px;
@@ -63,7 +24,7 @@ body {
     animation: modalFadeIn ease 0.3s;
 }
 
-.modal-create-header {
+.modal-delete-header {
     font-size: 25px;
     font-weight: bold;
     height: 80px;
@@ -72,7 +33,7 @@ body {
     justify-content: center;
 }
 
-.modal-create-close {
+.modal-delete-close {
     position: absolute;
     top: 0;
     right: 0;
@@ -84,15 +45,15 @@ body {
     background: none;
 }
 
-.modal-create-close:hover {
+.modal-delete-close:hover {
     background: rgb(216, 216, 216);
 }
 
-.modal-create-body {
+.modal-delete-body {
     padding: 0 16px;
 }
 
-.modal-create-input {
+.modal-delete-input {
     display: block;
     width: 100%;
     border-radius: 8px;
@@ -101,8 +62,18 @@ body {
     padding: 8px;
 }
 
-#create-list {
+#delete-list {
     background: #FF5C8D;
+    color: #FFF;
+    border: none;
+    border-radius: 8px;
+    padding: 8px 12px;
+    margin-top: 8px;
+    width: 100%;
+}
+
+#cancel {
+    background: #9f9f9f;
     color: #FFF;
     border: none;
     border-radius: 8px;

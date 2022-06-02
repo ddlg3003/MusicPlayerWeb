@@ -27,6 +27,13 @@ class PlaylistController {
             })
             .catch(next);
     }
+
+    // [DELETE] /playlist/:id
+    delete (req, res, next) {
+        Playlist.deleteOne({_id: req.params.id})
+            .then(() => res.json({"": ""}))
+            .catch(next);
+    }
 }
 
 module.exports = new PlaylistController();
