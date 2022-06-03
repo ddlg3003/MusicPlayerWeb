@@ -12,13 +12,14 @@
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
             <img src="{{user.avatar}}" alt="" class="user-avatar"> {{user.username}}
         </a>
-        {{#ifeq user.role 'user'}}
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="/">Trang cá nhân</a>
-        {{/ifeq}}
-        <div class="dropdown-divider"></div>
-        <form action="/auth/logout?_method=DELETE" method="POST">
-            <button style="font-weight: 500" class="dropdown-item" type="submit">Đăng xuất</button>
-        </form>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            {{#ifeq user.role 'user'}}
+                <a class="dropdown-item" href="/">Trang cá nhân</a>
+            {{/ifeq}}
+            <div class="dropdown-divider"></div>
+            <form action="/auth/logout?_method=DELETE" method="POST">
+                <button style="font-weight: 500" class="dropdown-item" type="submit">Đăng xuất</button>
+            </form>
+        </div>
     </div>
 {{/if}}
