@@ -56,3 +56,6 @@
 .user-header .dropdown-item:hover {
   color: #000;
   text-decoration: none; }
+
+.dropdown-item:active {
+  background-color: #E3E3E3 !important; }
