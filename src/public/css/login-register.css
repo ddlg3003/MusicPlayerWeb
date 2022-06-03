@@ -1,0 +1,32 @@
+body {
+  background-image: url("https://cdn.pixabay.com/photo/2016/11/01/14/48/purple-1788479_1280.png"); }
+
+.login-layout {
+  width: 40%;
+  margin: auto;
+  background: #fff;
+  padding: 40px;
+  box-shadow: 0px 0px 6px #8b8b8b;
+  border-radius: 16px; }
+
+.register-layout {
+  width: 40%;
+  margin: auto;
+  background: #fff;
+  padding: 40px;
+  border-radius: 16px;
+  box-shadow: 0px 0px 6px #8b8b8b; }
+
+.btn-primary {
+  background: #FF5C8D;
+  border: none; }
+
+.btn-primary:hover {
+  background: #da3b6a; }
+
+.aaa {
+  color: #FF5C8D; }
+
+.aaa:hover {
+  color: #da3b6a;
+  text-decoration: none; }

@@ -10,6 +10,7 @@ class PlaylistController {
     // [POST] /playlist/done
     add(req, res, next) {
         const formData = req.body;
+        Object.assign(formData, { _userid: req.user._id });
         console.log(formData);
         const playlist = new Playlist(formData);
         playlist.save()
@@ -21,7 +22,7 @@ class PlaylistController {
 
     // [GET] /playlist/api
     playlistApi(req, res, next) {
-        Playlist.find()
+        Playlist.find({ _userid: req.user._id })
             .then((playlists) => {
                 res.json({playlists});
             })
@@ -30,7 +31,7 @@ class PlaylistController {
 
     // [DELETE] /playlist/:id
     delete (req, res, next) {
-        Playlist.deleteOne({_id: req.params.id})
+        Playlist.deleteOne({_id: req.params.id })
             .then(() => res.json({"": ""}))
             .catch(next);
     }

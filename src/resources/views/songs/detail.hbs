@@ -8,12 +8,21 @@
                 <button class="detail-option">
                     <i style="opacity: 0.5" class="fas fa-ellipsis-h"></i>
                     <ul class="playlist-list">
-                        <p class="list-title">ADD TO PLAYLIST</p>
-                        {{#each playlists}}
-                            <li id="{{this._id}}" class="btn-add-to-playlist">
-                                {{this.name}}
-                            </li>
-                        {{/each}}
+                        {{#if user}}
+                            <p class="list-title">ADD TO PLAYLIST</p>
+                            {{#each playlists}}
+                                <li id="{{this._id}}" class="btn-add-to-playlist">
+                                    {{this.name}}
+                                </li>
+                            {{/each}}
+                        {{/if}}
+
+                        {{#unless user}}
+                            <p class="list-title">ADD TO PLAYLIST</p>
+                            <a class="a-config" href="/auth/login">
+                                <p class="list-title">Login to use</p>
+                            </a>
+                        {{/unless}}
                     </ul>
                 </button>
             </span>

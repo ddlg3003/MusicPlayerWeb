@@ -9,9 +9,17 @@ class SiteController {
         Song.find()
             .then(songs => {
                 songs = multipleMongooseToObject(songs);
-                res.render('home', {
-                    songs,
-                });
+                if (req.isAuthenticated()) {
+                    res.render('home', {
+                        songs,
+                        user: mongooseToObject(req.user),
+                    });
+                }
+                else {
+                    res.render('home', {
+                        songs,
+                    });
+                }
             })
             .catch(next);
     }

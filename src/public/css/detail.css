@@ -137,3 +137,10 @@
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap; }
+
+.a-config {
+  color: #000; }
+
+.a-config:hover {
+  color: #000;
+  text-decoration: none; }

@@ -8,17 +8,24 @@ const {
 class SongController {
     // [GET] /song/:id
     detail(req, res, next) {
-        Song.findOne({_id: req.params.id})
+        Song.findOne({_id: req.params.id })
             .then(song => {
-                Playlist.find()
+                if (req.isAuthenticated()) {
+                Playlist.find({ _userid: req.user._id })
                     .then(playlists => {
                         playlists = multipleMongooseToObject(playlists);
-                        res.render('songs/detail', {
-                            song: mongooseToObject(song),
-                            playlists,
-                        })
+                            res.render('songs/detail', {
+                                song: mongooseToObject(song),
+                                playlists,
+                                user: mongooseToObject(req.user),
+                            })
                     })
                     .catch(next);
+                }
+                else
+                    res.render('songs/detail', {
+                        song: mongooseToObject(song),
+                    })
             })
             .catch(next);
     }

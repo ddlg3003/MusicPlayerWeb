@@ -1,7 +1,7 @@
 // require handlebars {engine}
-// if (process.env.NODE_ENV !== 'production') {
-//     require('dotenv').config();
-// }
+if (process.env.NODE_ENV !== 'production') {
+    require('dotenv').config();
+}
 const { engine } = require('express-handlebars');
 const path = require('path');
 const express = require('express');
@@ -10,25 +10,25 @@ const port = 3000;
 const morgan = require('morgan');
 const db = require('./config/db');
 const methodOverride = require('method-override');
-// const session = require('express-session');
-// const passport = require('passport');
-// const flash = require('express-flash');
+const session = require('express-session');
+const passport = require('passport');
+const flash = require('express-flash');
 
-// app.use(
-//     session({
-//         secret: process.env.SESSION_SECRET,
-//         resave: false,
-//         saveUninitialized: false,
-//         cookie: {
-//             httpOnly: true,
-//             maxAge: 36000000,
-//         },
-//     }),
-// );
+app.use(
+    session({
+        secret: process.env.SESSION_SECRET,
+        resave: false,
+        saveUninitialized: false,
+        cookie: {
+            httpOnly: true,
+            maxAge: 36000000,
+        },
+    }),
+);
 
-// app.use(passport.initialize());
-// app.use(passport.session());
-// app.use(flash());
+app.use(passport.initialize());
+app.use(passport.session());
+app.use(flash());
 
 // Connect sau khi import từ db/index.js
 db.connect();

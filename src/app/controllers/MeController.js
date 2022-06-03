@@ -9,20 +9,34 @@ const {
 class MeController {
     // [GET] /me/library
     library(req, res, next) {
-        Playlist.find()
+        Playlist.find({ _userid: req.user._id })
             .then((playlists) => {
                 playlists = multipleMongooseToObject(playlists);
-                res.render('me/library', { playlists });
+                if(req.isAuthenticated()) {
+                    res.render('me/library', { 
+                       playlists,
+                       user: mongooseToObject(req.user),
+                    });
+                }
+                else
+                    res.render('me/library', { playlists });
             })
             .catch(next);
     }
 
     // [GET] /playlist/:id
     playlist(req, res, next) {
-        Playlist.findOne({_id: req.params.id})
+        Playlist.findOne({_id: req.params.id })
             .then(playlist => {
                 playlist = mongooseToObject(playlist);
-                res.render('me/playlist', {playlist});
+                if(req.isAuthenticated()) {
+                    res.render('me/playlist', {
+                        playlist,
+                        user: mongooseToObject(req.user),
+                    });
+                }
+                else
+                    res.render('me/playlist', {playlist});
             })
             .catch(next);
     }

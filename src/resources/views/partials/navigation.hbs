@@ -6,8 +6,15 @@
             <a href="/"><li><i class="fa-solid fa-circle-info"></i> About</li></a>
         </ul>
     </div>
-<button class="quick-playlist-cre-btn">
-    <i class="fa-solid fa-square-plus"></i> Create Playlist
-</button>
+{{#if user}}
+    <button class="quick-playlist-cre-btn">
+        <i class="fa-solid fa-square-plus"></i> Create Playlist
+    </button>
+{{/if}}
 
+{{#unless user}}
+    <button class="quick-playlist-cre-btn" disabled>
+        <i class="fa-solid fa-square-plus"></i> Create Playlist
+    </button>
+{{/unless}}
 

@@ -3,5 +3,22 @@
         <input style="border-radius: 16px; margin-top: 4px;" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
     </form>
 </div>
-<a href="/" class="login-button">Login</a>
+{{#unless user}}
+    <a href="/auth/login" class="login-button">Login</a>
+{{/unless}}
 
+{{#if user}}
+    <div class="nav-item dropdown active user-header">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
+            <img src="{{user.avatar}}" alt="" class="user-avatar"> {{user.username}}
+        </a>
+        {{#ifeq user.role 'user'}}
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="/">Trang cá nhân</a>
+        {{/ifeq}}
+        <div class="dropdown-divider"></div>
+        <form action="/auth/logout?_method=DELETE" method="POST">
+            <button style="font-weight: 500" class="dropdown-item" type="submit">Đăng xuất</button>
+        </form>
+    </div>
+{{/if}}
