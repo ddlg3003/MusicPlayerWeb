@@ -66,6 +66,7 @@
     border-radius: 50%;
     background-color: #333;
     background-size: cover;
+    z-index: -1;
 }
 
 /* CONTROL */
@@ -117,7 +118,49 @@
     cursor: pointer;
 }
 
+.detail-option {
+    border: none;
+    background: none;
+    position: relative;
+    margin-left: 12px;
+}
+
 .detail-option:hover {
     cursor: pointer;
+}
+
+.detail-option:hover .playlist-list {
+    display: block;
+}
+
+.playlist-list {
+    display: none;
+    position: absolute;
+    list-style-type: none;
+    font-size: 14px;
+    font-weight: 500;
+    box-shadow: 0px 0px 4px rgb(139, 139, 139);
+    width: 140px;
+    background-color: #fff;
+}
+
+.playlist-list li:hover {
+    background-color: #E3E3E3;
+}
+
+.playlist-list li {
+    padding: 6px 0;
+}
+
+.list-title {
+    padding: 8px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.4);
+    margin: 0;
+}
+
+.btn-add-to-playlist {
+    overflow: hidden;
+    text-overflow: ellipsis; 
+    white-space: nowrap;
 }
   

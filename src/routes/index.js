@@ -6,7 +6,7 @@ const playlistRouter = require('./playlist');
 function route(app) {
     app.use('/playlist', playlistRouter);
     app.use('/me', meRouter);
-    app.use('/songs', songRouter);
+    app.use('/song', songRouter);
     app.use('/', siteRouter);
 }
 

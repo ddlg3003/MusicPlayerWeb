@@ -1,25 +1,34 @@
 const Song = require('../models/Song');
-// const Playlist = require('../models/Playlist');
+const Playlist = require('../models/Playlist');
 const {
     multipleMongooseToObject,
     mongooseToObject,
 } = require('../../util/mongoose');
 
 class SongController {
-    // [GET] /songs/:id
+    // [GET] /song/:id
     detail(req, res, next) {
         Song.findOne({_id: req.params.id})
             .then(song => {
-                res.render('songs/detail', {
-                    song: mongooseToObject(song),
-                })
+                Playlist.find()
+                    .then(playlists => {
+                        playlists = multipleMongooseToObject(playlists);
+                        res.render('songs/detail', {
+                            song: mongooseToObject(song),
+                            playlists,
+                        })
+                    })
+                    .catch(next);
             })
             .catch(next);
     }
-
-    // [GET] /song/add
-    add(req, res) {
-        
+    // [PUT] /song/:id/:listid/add
+    addSongtoList(req, res) {
+        Playlist.updateOne(
+            {_id: req.params.listid },
+            { $addToSet: { content: req.params.id } })
+            .then(() => res.json({"": ""}))
+            .catch() 
     }
 }
 

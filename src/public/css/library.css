@@ -88,3 +88,9 @@
   top: 0;
   right: 0;
   margin: 4px; }
+
+.card-text {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 150px;
+  white-space: nowrap; }

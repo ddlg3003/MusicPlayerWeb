@@ -3,6 +3,7 @@ const modal = document.querySelector('.modal-create');
 const closeBtn = document.querySelector('.modal-create-close');
 const createBtn = document.querySelector('#create-list');
 const playlistContainer = document.querySelector('.playlist-container');
+const inputName = document.querySelector('input[name="name"]');
 const createApi = 'http://localhost:3000/playlist/done';
 const playlistApi = 'http://localhost:3000/playlist/api';
 
@@ -46,7 +47,7 @@ function handleCreateForm() {
     });
 }
 
-if (window.location.href === 'http://localhost:3000/me/library') {
+if (window.location.href === `http://localhost:3000/me/library`) {
     // Delete handler
     let delOpenBtns = document.getElementsByClassName('del-playlist');
     const delModal = document.querySelector('.modal-delete');
@@ -95,5 +96,13 @@ if (window.location.href === 'http://localhost:3000/me/library') {
     delCloseBtn.addEventListener('click', closeDelModal);
 }
 
+document.addEventListener("keyup", (e) => {
+    if (e.code === "Enter") {
+        createBtn.click();
+        e.preventDefault();
+    }
+});
 
 handleCreateForm();
+
+

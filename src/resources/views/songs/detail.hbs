@@ -4,8 +4,18 @@
     <!-- Header -->
     <header class="detail-header">
         <h2 class="detail-header-2">{{song.name}} 
-            <span class="detail-option">
-                <i style="padding-left:12px; opacity: 0.5" class="fas fa-ellipsis-h"></i>
+            <span class="option-containter"></span>
+                <button class="detail-option">
+                    <i style="opacity: 0.5" class="fas fa-ellipsis-h"></i>
+                    <ul class="playlist-list">
+                        <p class="list-title">ADD TO PLAYLIST</p>
+                        {{#each playlists}}
+                            <li id="{{this._id}}" class="btn-add-to-playlist">
+                                {{this.name}}
+                            </li>
+                        {{/each}}
+                    </ul>
+                </button>
             </span>
         </h2>
         <h4 class="detail-header-4">{{song.singer}}</h4>

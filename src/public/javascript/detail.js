@@ -60,3 +60,67 @@ const cdThumbAnimate = cdThumb.animate([
 })
 
 cdThumbAnimate.pause();
+
+
+//--------------------------------------------------------
+
+window.addEventListener('load', () => {
+    const createBtnn = document.querySelector('#create-list');
+    const list = document.querySelector('.playlist-list');
+    const listApi = 'http://localhost:3000/playlist/api';
+    let addTolistBtns = document.querySelectorAll('.btn-add-to-playlist');
+
+    function handleAddToList() {
+        for(const addTolistBtn of addTolistBtns) {
+            addTolistBtn.addEventListener('click', (e) => {
+                console.log(e.target.getAttribute('id'));
+                const options = {
+                    method: 'PUT',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                };
+                
+                alert('Song added');
+                const addApi = `${window.location.href}/${e.target.getAttribute('id')}/add`;
+                fetch(addApi, options)
+                .then(response => response.json())
+                .catch(error => console.log(error));
+            });
+        }
+    }
+
+    handleAddToList();
+
+    function renderList() {
+        fetch(listApi)
+            .then(res => res.json())
+            .then(data => {
+                const htmls = data.playlists.map(playlist => {
+                    return `<li id="${playlist._id}" class="btn-add-to-playlist">${playlist.name}</li>`;
+                })
+                list.innerHTML = 
+                '<p class="list-title">ADD TO PLAYLIST</p>' + htmls.join('');
+            })
+    }
+
+    createBtnn.addEventListener('click', () => {
+        renderList();
+    })
+
+    const config = { attributes: true, childList: true, subtree: true };
+    const callback = mutations => {  
+        mutations.forEach(mutation => {
+            if(mutation.type === 'childList') {
+                addTolistBtns = document.querySelectorAll('.btn-add-to-playlist');
+                handleAddToList();
+            }
+        });
+    }
+    const observer = new MutationObserver(callback);
+    observer.observe(list, config);
+})
+
+
+
+

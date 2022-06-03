@@ -31,7 +31,7 @@ class MeController {
     playlistApi(req, res, next) {
         Playlist.findOne({_id: req.params.id})
         .then(playlist => {
-            Song.find({name: playlist.content})
+            Song.find({_id: playlist.content})
                 .then(songs => {
                     res.json(songs);
                 })

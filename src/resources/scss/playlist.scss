@@ -46,6 +46,11 @@ header {
     top: 54px;
     font-size: 60px;
     font-weight: 700;
+    white-space: nowrap;
+    width: 760px;
+    overflow: hidden;
+    text-overflow: ellipsis; 
+    padding-bottom: 4px;
 }
 
 header h4 {
