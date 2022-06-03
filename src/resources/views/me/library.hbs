@@ -4,7 +4,21 @@
 <div class="song-list">
     <div class="container-fluid">
         <div class="row playlist-container">
-                            
+        {{#each playlists}}
+            <div class="song-card col-sm-2 mt-3">
+               <div class="card" style="width: 12rem;">
+                    <button data-id="{{this._id}}" class="del-playlist">
+                      <i class="fa-solid fa-xmark"></i>
+                    </button>
+                    <a href="/me/playlist/{{this._id}}">
+                       <img src="{{this.image}}" class="card-img-top" alt="...">
+                       <div class="card-body">
+                            <p class="card-text">{{this.name}}</p>
+                        </div>
+                    </a>
+               </div>                
+            </div>         
+        {{/each}}
         </div>
     </div>
 </div>
