@@ -4,8 +4,8 @@ const closeBtn = document.querySelector('.modal-create-close');
 const createBtn = document.querySelector('#create-list');
 const playlistContainer = document.querySelector('.playlist-container');
 const inputName = document.querySelector('input[name="name"]');
-const createApi = 'http://localhost:3000/playlist/done';
-const playlistApi = 'http://localhost:3000/playlist/api';
+const createApi = `http://${window.location.host}/playlist/done`;
+const playlistApi = `http://${window.location.host}/playlist/api`;
 
 openCreateBtn.addEventListener('click', () => {
     modal.classList.add('open');
@@ -42,12 +42,12 @@ function handleCreateForm() {
         createPlaylist(data);
         modal.classList.remove('open');
         
-        if (window.location.href === 'http://localhost:3000/me/library')
+        if (window.location.href === `http://${window.location.host}/me/library`)
             window.location.reload();
     });
 }
 
-if (window.location.href === `http://localhost:3000/me/library`) {
+if (window.location.href === `http://${window.location.host}/me/library`) {
     // Delete handler
     let delOpenBtns = document.getElementsByClassName('del-playlist');
     const delModal = document.querySelector('.modal-delete');
@@ -82,7 +82,7 @@ if (window.location.href === `http://localhost:3000/me/library`) {
         const id = delOpenBtn.getAttribute('data-id');
         delOpenBtn.addEventListener('click', () => {
             showDelModal();
-            const delApi = `http://localhost:3000/playlist/${id}`;
+            const delApi = `http://${window.location.host}/playlist/${id}`;
             delBtn.addEventListener('click', () => {
                 delPlaylist(delApi);
                 closeDelModal();

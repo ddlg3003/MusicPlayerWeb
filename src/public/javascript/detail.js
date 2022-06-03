@@ -67,7 +67,7 @@ cdThumbAnimate.pause();
 window.addEventListener('load', () => {
     const createBtnn = document.querySelector('#create-list');
     const list = document.querySelector('.playlist-list');
-    const listApi = 'http://localhost:3000/playlist/api';
+    const listApi = `http://${window.location.host}/playlist/api`;
     let addTolistBtns = document.querySelectorAll('.btn-add-to-playlist');
 
     function handleAddToList() {
@@ -76,6 +76,7 @@ window.addEventListener('load', () => {
                 console.log(e.target.getAttribute('id'));
                 const options = {
                     method: 'PUT',
+                    mode: 'cors',
                     headers: {
                         'Content-Type': 'application/json'
                     }
