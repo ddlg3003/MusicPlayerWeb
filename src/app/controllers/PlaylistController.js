@@ -24,7 +24,7 @@ class PlaylistController {
     playlistApi(req, res, next) {
         Playlist.find({ _userid: req.user._id })
             .then((playlists) => {
-                res.json({playlists});
+                res.json({ playlists });
             })
             .catch(next);
     }
@@ -33,6 +33,28 @@ class PlaylistController {
     delete (req, res, next) {
         Playlist.deleteOne({_id: req.params.id })
             .then(() => res.json({"": ""}))
+            .catch(next);
+    }
+
+    // [GET] /playlist/:name/api
+    genrePlaylistApi(req, res, next) {
+        Song.find({ genre: req.params.name })
+            .then(songs => res.json(songs))
+            .catch(next);
+    }
+
+    // [GET] /playlist/:name
+    genrePlaylist(req, res, next) {
+        Song.find({ name: req.params.name })
+            .then(songs => {
+                songs = multipleMongooseToObject(songs);    
+                res.render('me/playlist', {
+                    songs,
+                    playlist: {
+                        name: req.params.name,
+                    }
+                });
+            })
             .catch(next);
     }
 }

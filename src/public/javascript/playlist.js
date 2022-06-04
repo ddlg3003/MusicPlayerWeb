@@ -26,7 +26,7 @@ fetch(playlistApi)
             isRandom: false,
             isRepeat: false,
             config: JSON.parse(localStorage.getItem(PLAYER_STORAGE_KEY)) || {},
-            songs: data,
+            songs: data.length > 0 ? data : data.songs,
             setConfig: function(key, value) {
                 this.config[key] = value;
                 localStorage.setItem(PLAYER_STORAGE_KEY, JSON.stringify(this.config));

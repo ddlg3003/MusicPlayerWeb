@@ -19,3 +19,25 @@
         </div>
     </div>
 </div>
+
+<div class="music-list-text">
+    <h3>Playlist</h3>
+</div>
+<div class="song-list">
+    <div class="container-fluid">
+        <div class="row">
+        {{#each genres}}
+            <div class="song-card col-sm-2 mt-3">
+                <a href="/playlist/{{this.name}}">
+                    <div class="card" style="width: 12rem;">
+                        <img src="https://png.pngtree.com/png-vector/20190329/ourlarge/pngtree-vector-music-note-icon-png-image_889465.jpg" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <p class="card-text">{{this.name}}</p>
+                        </div>
+                    </div>                
+                </a>
+            </div>                      
+        {{/each}}
+        </div>
+    </div>
+</div>

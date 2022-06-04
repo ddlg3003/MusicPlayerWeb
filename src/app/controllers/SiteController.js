@@ -29,11 +29,17 @@ class SiteController {
             else if(req.user.role === 'user') {
                 Song.find({ isDeleted: false }) 
                 .then((songs) => {
-                    songs = multipleMongooseToObject(songs);
-                    res.render('home', {
-                        user: mongooseToObject(req.user),
-                        songs,
-                    })
+                    Genre.find()
+                        .then(genres => {
+                            genres = multipleMongooseToObject(genres);
+                            songs = multipleMongooseToObject(songs);
+                            res.render('home', {
+                                user: mongooseToObject(req.user),
+                                genres,
+                                songs,
+                            })
+                        })
+                        .catch(next);
                 }) 
                 .catch(next);
             }
@@ -41,10 +47,17 @@ class SiteController {
         else {
             Song.find({ isDeleted: false }) 
                 .then((songs) => {
-                    songs = multipleMongooseToObject(songs);
-                    res.render('home', {
-                        songs,
-                    })
+                    Genre.find()
+                        .then(genres => {
+                            genres = multipleMongooseToObject(genres);
+                            songs = multipleMongooseToObject(songs);
+                            res.render('home', {
+                                user: mongooseToObject(req.user),
+                                genres,
+                                songs,
+                            })
+                        })
+                        .catch(next);
                 }) 
                 .catch(next);
         }
