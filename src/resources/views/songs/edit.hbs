@@ -1,31 +1,31 @@
 <div class="admin-wrap">
-    <h3 class="margin-header">Add new song</h3>
-    <form method="POST" action="/song/created">
+    <h3 class="margin-header">Update a song</h3>
+    <form method="POST" action="/song/{{song._id}}?_method=PUT">
         <div class="form-group">
             <label for="name">Name</label>
-            <input class="form-control" name="name" required>
+            <input class="form-control" value="{{song.name}}" name="name">
         </div>
             <div class="form-group">
             <label for="singer">Singer</label>
-            <input class="form-control" name="singer" required>
+            <input class="form-control" name="singer" value="{{song.singer}}"></input>
         </div>
         <div class="form-group">
             <label for="image">Image</label>
-            <input class="form-control" name="image" required>
+            <input class="form-control" value="{{song.image}}" name="image">
         </div> 
         <div class="form-group">
             <label for="path">Path</label>
-            <input class="form-control" name="path" required>
+            <input class="form-control" value="{{song.path}}" name="path">
         </div>   
-        <div  class="form-group">
+        <div class="form-group">
             <label for="genre">Genre</label>
             <select class="form-control" name="genre" required>
                 {{#each genres}}
                     <option value="{{this.name}}">{{this.name}}</option>
                 {{/each}}
             </select>
-        </div>    
-
-        <button type="submit" class="btn btn-dark">Confirm add</button>
+        </div>                   
+        <button type="submit" class="btn btn-dark">Update</button>
     </form>
 </div>
+

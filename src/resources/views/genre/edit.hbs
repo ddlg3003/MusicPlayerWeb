@@ -1,0 +1,8 @@
+<div class="admin-wrap">
+    <h3 class="margin-header">Update a song</h3>
+    <form method="POST" action="/genre/{{genre._id}}?_method=PUT">
+        <div class="form-group">
+            <label for="name">Name</label>
+            <input class="form-control" value="{{genre.name}}" name="name">               
+        <button type="submit" class="btn btn-dark mt-1">Update</button>
+    </form>

@@ -11,7 +11,7 @@
 </head>
 <body>
     <div class="register-layout mt-4">
-        <h1 style="font-weight:bold;" class="text-center">ĐĂNG KÝ TÀI KHOẢN MỚI</h1>
+        <h1 style="font-weight:bold;" class="text-center">REGISTER</h1>
         {{#if messages.error}}
         <div class="alert alert-danger">
             {{messages.error}}
@@ -21,20 +21,20 @@
             <form method="POST" action="/auth/register">
                 <div class="form-group">
                     <label for="username">Username</label>
-                    <input type="text" placeholder="Ít nhất 6 kí tự..." class="form-control" id="username" name="username" required>
+                    <input type="text" placeholder="At least 6 characters" class="form-control" id="username" name="username" required>
                 </div>
                 <div class="form-group">
                     <label for="email">Email</label>
-                    <input type="email" placeholder="Đúng định dạng. Eg: Dang404@gmail.com..." class="form-control" id="email" name="email" required>
+                    <input type="email" placeholder="Eg: Dang404@gmail.com..." class="form-control" id="email" name="email" required>
                 </div>
                 <div class="form-group">
-                    <label for="password">Mật khẩu</label>
-                    <input type="password" placeholder="Ít nhất 8 - 15 kí tự, gồm chữ viết hoa, thường, kí tự đặc biệt và số..." 
+                    <label for="password">Password</label>
+                    <input type="password" placeholder="8-15 characters, including special characters, numbers and uppercase..." 
                     class="form-control" id="password" name="password" required>
                 </div>
                 <div class="form-group">
-                    <label for="rePassword">Nhập lại mật khẩu</label>
-                    <input type="password" placeholder="Nhập lại mật khẩu khớp với mật khẩu ở trên..." class="form-control" id="rePassword" name="rePassword" required>
+                    <label for="rePassword">Retype password</label>
+                    <input type="password" placeholder="Retype password..." class="form-control" id="rePassword" name="rePassword" required>
                 </div>
                 <button type="submit" class="btn btn-primary">Đăng ký</button>
             </form><br>

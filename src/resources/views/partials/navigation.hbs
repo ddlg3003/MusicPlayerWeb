@@ -1,4 +1,5 @@
-<div class="music-web-name"><span style="font-size: 24px"><i class="fa-solid fa-music"></i></span>MPLAYER</div>
+{{#unless user}}
+    <div class="music-web-name"><span style="font-size: 24px"><i class="fa-solid fa-music"></i></span>MPLAYER</div>
     <div class="music-nav-list">
         <ul class="ul-list">
             <a href="/"><li><i class="fa-solid fa-house"></i> Home</li></a>
@@ -6,15 +7,43 @@
             <a href="/"><li><i class="fa-solid fa-circle-info"></i> About</li></a>
         </ul>
     </div>
-{{#if user}}
-    <button class="quick-playlist-cre-btn">
-        <i class="fa-solid fa-square-plus"></i> Create Playlist
-    </button>
-{{/if}}
-
-{{#unless user}}
     <button class="quick-playlist-cre-btn" disabled>
         <i class="fa-solid fa-square-plus"></i> Create Playlist
     </button>
 {{/unless}}
+
+{{#if user}}
+    {{#ifeq user.role 'user'}}
+        <div class="music-web-name"><span style="font-size: 24px"><i class="fa-solid fa-music"></i></span>MPLAYER</div>
+        <div class="music-nav-list">
+            <ul class="ul-list">
+                <a href="/"><li><i class="fa-solid fa-house"></i> Home</li></a>
+                <a href="/me/library"><li><i class="fa-solid fa-list"></i> Library</li></a>
+                <a href="/"><li><i class="fa-solid fa-circle-info"></i> About</li></a>
+            </ul>
+        </div>
+        <button class="quick-playlist-cre-btn">
+            <i class="fa-solid fa-square-plus"></i> Create Playlist
+        </button>
+    {{/ifeq}}
+
+    {{#ifeq user.role 'admin'}}
+        <div class="music-web-name">
+            <span style="font-size: 24px">
+                <i class="fa-solid fa-music"></i>
+            </span>MPLAYER<p class="role-text">Admin</p></div>
+        <div class="music-nav-list">
+            <ul class="ul-list">
+                <a href="/song/lists"><li><i class="fa-solid fa-headphones"></i> Song lists</li></a>
+                <a href="/user/lists"><li><i class="fa-solid fa-user-large"></i> User lists</li></a>
+                <a href="/genre/lists"><li><i class="fa-solid fa-bars-staggered"></i> Genres</li></a>
+            </ul>
+        </div>    
+        <button class="quick-playlist-cre-btn" disabled>
+            <i class="fa-solid fa-square-plus"></i> Create Playlist
+        </button>
+    {{/ifeq}}
+{{/if}}
+
+
 

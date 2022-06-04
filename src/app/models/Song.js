@@ -12,6 +12,8 @@ const Song = new Schema(
         singer: { type: String },
         image: { type: String },
         path: { type: String },
+        genre: { type: String },
+        isDeleted: { type: Boolean, default: false },
     },
     {
         timestamps: true,

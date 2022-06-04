@@ -1,0 +1,26 @@
+<div class="admin-wrap">
+    <h3 class="margin-header">Users list</h3>
+    <table class="table mycourse-container">
+    <thead>
+        <tr>
+            <th scope="col" class="col-index">#</th>
+            <th scope="col">Username</th>
+            <th scope="col">Email</th>
+            <th scope="col" colspan="2">Register date</th>
+        </tr>
+    </thead>
+    <tbody>
+        {{#each users}}
+        <tr>
+            <th scope="row" class="col-index">{{sum @index 1}}</th>
+            <td>{{this.username}}</td>
+            <td>{{this.email}}</td>
+            <td>{{this.createdAt}}</td>
+            <td>
+                <a href="" class="btn btn-danger">Ban</a>
+            </td>
+        </tr>
+        {{/each}}
+    </tbody>
+</table>
+</div>

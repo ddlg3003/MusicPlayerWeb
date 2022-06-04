@@ -64,6 +64,20 @@ app.engine(
                 if (a === b) return opts.fn(this);
                 else return opts.inverse(this);
             },
+
+            ifin: (elem, list, options) => {
+                if(list.indexOf(elem) > -1) {
+                    return options.fn(this);
+                }
+                return options.inverse(this);
+            },
+
+            ifnotin: (elem, list, options) => {
+                if(list.indexOf(elem) <= -1) {
+                    return options.fn(this);
+                }
+                return options.inverse(this);
+            }
         },
     }),
 );

@@ -1,0 +1,74 @@
+<div class="admin-wrap">
+    <h3 class="margin-header">Genres list <a href="/genre/add" class="btn btn-dark">Add genre</a></h3>
+    <table class="table mycourse-container">
+    <thead>
+        <tr>
+            <th scope="col" class="col-index">#</th>
+            <th scope="col">Genre name</th>
+            <th scope="col" colspan="2">Created date</th>
+        </tr>
+    </thead>
+    <tbody>
+        {{#each genres as |genres|}}
+        <tr>
+            <th scope="row" class="col-index">{{sum @index 1}}</th>
+            <td>{{this.name}}</td>
+            <td>{{this.createdAt}}</td>
+            <td>
+                <div class="d-grid gap-2 col-8 mx-auto">
+                    <a href="/genre/{{this._id}}/edit" class="btn btn-dark">Update</a>
+                    <a href="" class="btn btn-dark check-method" data-toggle="modal" 
+                        data-id="{{this._id}}" data-target="#delete-course-modal">
+                        Delete
+                    </a>             
+                </div>            
+            </td>
+        </tr>
+        {{/each}}
+    </tbody>
+</table>
+</div>
+
+
+{{!-- Delete form --}}
+<form id="delete-form" method="post"></form>
+
+{{!-- Confirm delete --}}
+<div id="delete-course-modal" class="modal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Delete song?</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>Are you sure?</p>
+            </div>
+            <div class="modal-footer">
+                <button id="btn-delete-course" class="btn btn-danger">Delete</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // When DOMContentLoaded then run Jquery code below
+    document.addEventListener('DOMContentLoaded', function() {
+        var id;
+        const deleteForm = document.querySelector('#delete-form');
+        const btnDeleteCourse = document.querySelector('#btn-delete-course');
+        // Get the Course id from the button
+        $('#delete-course-modal').on('show.bs.modal', function (event) {
+            var button = $(event.relatedTarget);
+            id = button.data('id'); 
+        });
+        // Set action for delete form when click delete button 
+        btnDeleteCourse.onclick = function (event) {
+            deleteForm.action = `/genre/${id}/delete?_method=DELETE`;
+            deleteForm.submit();
+        }
+    })
+</script>

@@ -13,12 +13,10 @@
             <img src="{{user.avatar}}" alt="" class="user-avatar"> {{user.username}}
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            {{#ifeq user.role 'user'}}
-                <a class="dropdown-item" href="/">Trang cá nhân</a>
-            {{/ifeq}}
+            <a class="dropdown-item" href="/">Profile</a>
             <div class="dropdown-divider"></div>
             <form action="/auth/logout?_method=DELETE" method="POST">
-                <button style="font-weight: 500" class="dropdown-item" type="submit">Đăng xuất</button>
+                <button style="font-weight: 500" class="dropdown-item" type="submit">Logout</button>
             </form>
         </div>
     </div>

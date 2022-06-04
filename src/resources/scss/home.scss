@@ -17,6 +17,7 @@ body {
 .music-list-text {
     padding-top: 40px;
     padding-left: 20px;
+    padding-right: 20px;
 }
 
 .song-list {
@@ -130,4 +131,12 @@ body {
     top: 0;
     right: 0;
     margin: 4px;
+}
+
+.admin-wrap {
+    margin: 80px 40px;
+    padding: 20px 50px;
+    background: #FFF;
+    box-shadow: 0px 0px 4px rgb(139, 139, 139);
+    border-radius: 16px;
 }

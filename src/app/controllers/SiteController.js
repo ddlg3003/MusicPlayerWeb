@@ -1,4 +1,6 @@
 const Song = require('../models/Song');
+const Genre = require('../models/Genre');
+
 const {
     multipleMongooseToObject,
     mongooseToObject,
@@ -6,22 +8,46 @@ const {
 
 class SiteController {
     show(req, res, next) {
-        Song.find()
-            .then(songs => {
-                songs = multipleMongooseToObject(songs);
-                if (req.isAuthenticated()) {
+        if(req.isAuthenticated()) {
+            if(req.user.role == 'admin') {
+                Song.find() 
+                    .then((songs) => {
+                        Genre.find()
+                            .then(genres => {
+                                songs = multipleMongooseToObject(songs);
+                                genres =multipleMongooseToObject(genres);
+
+                                res.render('songs/list', {
+                                    user: mongooseToObject(req.user),
+                                    songs,
+                                    genres,
+                                })
+                            })
+                            .catch(next);
+                    }) 
+            }
+            else if(req.user.role === 'user') {
+                Song.find({ isDeleted: false }) 
+                .then((songs) => {
+                    songs = multipleMongooseToObject(songs);
                     res.render('home', {
-                        songs,
                         user: mongooseToObject(req.user),
-                    });
-                }
-                else {
+                        songs,
+                    })
+                }) 
+                .catch(next);
+            }
+        }
+        else {
+            Song.find({ isDeleted: false }) 
+                .then((songs) => {
+                    songs = multipleMongooseToObject(songs);
                     res.render('home', {
                         songs,
-                    });
-                }
-            })
-            .catch(next);
+                    })
+                }) 
+                .catch(next);
+        }
     }
 }
 
