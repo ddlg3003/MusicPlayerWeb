@@ -67,7 +67,7 @@ cdThumbAnimate.pause();
 window.addEventListener('load', () => {
     const createBtnn = document.querySelector('#create-list');
     const list = document.querySelector('.playlist-list');
-    const listApi = `http://${window.location.host}/playlist/api`;
+    const listApi = `${window.location.protocol}//${window.location.host}/playlist/api`;
     let addTolistBtns = document.querySelectorAll('.btn-add-to-playlist');
 
     function handleAddToList() {

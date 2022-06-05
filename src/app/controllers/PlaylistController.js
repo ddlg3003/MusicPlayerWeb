@@ -24,7 +24,7 @@ class PlaylistController {
     playlistApi(req, res, next) {
         Playlist.find({ _userid: req.user._id })
             .then((playlists) => {
-                res.json({ playlists });
+                res.json({ playlists });;
             })
             .catch(next);
     }
@@ -38,8 +38,9 @@ class PlaylistController {
 
     // [GET] /playlist/:name/api
     genrePlaylistApi(req, res, next) {
+        const permission = false;
         Song.find({ genre: req.params.name })
-            .then(songs => res.json(songs))
+            .then(songs => res.json({ songs, permission }))
             .catch(next);
     }
 

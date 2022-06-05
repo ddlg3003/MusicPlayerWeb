@@ -43,11 +43,12 @@ class MeController {
 
     // [GET] /playlist/:id/api
     playlistApi(req, res, next) {
+        const permission = true;
         Playlist.findOne({_id: req.params.id})
         .then(playlist => {
             Song.find({ _id: playlist.content, isDeleted: false })
                 .then(songs => {
-                    res.json(songs);
+                    res.json({ songs, permission });
                 })
         })
         .catch(next);

@@ -9,7 +9,7 @@ const {
 
 router.put('/:id/:songid/remove', playlistController.removeSong);
 router.post('/done', auth.checkAuthenticated, playlistController.add);
-router.get('/api', playlistController.playlistApi);
+router.get('/api', auth.checkAuthenticated, playlistController.playlistApi);
 router.get('/:name/api', playlistController.genrePlaylistApi);
 router.get('/:name', playlistController.genrePlaylist);
 router.delete('/:id', auth.checkAuthenticated, playlistController.delete);

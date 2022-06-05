@@ -3,6 +3,7 @@ playlistApi = window.location.href + '/api';
 fetch(playlistApi)
     .then(res => res.json())
     .then(data => {
+        console.log(data.songs);
         const $ = document.querySelector.bind(document);
         const $$ = document.querySelectorAll.bind(document);
 
@@ -26,7 +27,7 @@ fetch(playlistApi)
             isRandom: false,
             isRepeat: false,
             config: JSON.parse(localStorage.getItem(PLAYER_STORAGE_KEY)) || {},
-            songs: data.length > 0 ? data : data.songs,
+            songs: data.songs,
             setConfig: function(key, value) {
                 this.config[key] = value;
                 localStorage.setItem(PLAYER_STORAGE_KEY, JSON.stringify(this.config));
@@ -42,7 +43,7 @@ fetch(playlistApi)
                             <p class="author">${song.singer}</p>
                         </div>
                         <div class="option">
-                            <i class="fas fa-ellipsis-h"></i>
+                            <i class="fa-solid fa-xmark"></i>
                         </div>
                     </div>
                     `;
@@ -208,7 +209,32 @@ fetch(playlistApi)
                         }
 
                         if(e.target.closest('.option')) {
-                            console.log("hihihaha")
+                            if(data.permission) {
+                                const pathArr = window.location.pathname.split('/');
+                                const playlistId = pathArr[3];
+                                console.log(_this.currentSong._id)
+    
+                                function delSongPlaylist(api) {
+                                    const options = {
+                                        method: 'PUT',
+                                        headers: {
+                                            'Content-Type': 'application/json'
+                                        }
+                                    };
+    
+                                    fetch(api, options)
+                                    .then(response => response.json())
+                                    .catch(error => console.log(error));
+                                }
+                                
+                                const delSongPlaylistApi =
+                                `${window.location.protocol}//${window.location.host}/playlist/` +
+                                `${playlistId}/${_this.currentSong._id}/remove`;
+                                delSongPlaylist(delSongPlaylistApi);
+                                window.location.reload();
+                            }
+                            else
+                                alert("You do not have permission to make change to this playlist");
                         }
                     }
                 }
@@ -273,7 +299,7 @@ fetch(playlistApi)
             },
         };
         
-        if (data.length > 0) {
+        if (data.songs.length > 0) {
             app.start();
         }
     })
