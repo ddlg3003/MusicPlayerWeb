@@ -47,13 +47,29 @@ class PlaylistController {
     genrePlaylist(req, res, next) {
         Song.find({ name: req.params.name })
             .then(songs => {
-                songs = multipleMongooseToObject(songs);    
-                res.render('me/playlist', {
-                    songs,
-                    playlist: {
-                        name: req.params.name,
+                songs = multipleMongooseToObject(songs);   
+                if (req.isAuthenticated()) {
+                    if(req.user.role == 'admin') {
+                        res.redirect('/');
                     }
-                });
+                    else if(req.user.role == 'user') {
+                        res.render('me/playlist', {
+                            songs,
+                            playlist: {
+                                user: mongooseToObject(req.user),
+                                name: req.params.name,
+                            }
+                        });
+                    }
+                }
+                else 
+                    res.render('me/playlist', {
+                        songs,
+                        playlist: {
+                            name: req.params.name,
+                        }
+                    }); 
+
             })
             .catch(next);
     }

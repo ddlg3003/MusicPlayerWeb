@@ -2,6 +2,10 @@ const playlistController = require('../app/controllers/PlaylistController');
 const express = require('express');
 const router = express.Router();
 const auth = require('../config/middleware/auth');
+const {
+    isAdminLogin,
+    isUserLogin,
+} = require('../config/middleware/passport');
 
 router.get('/:name/api', playlistController.genrePlaylistApi);
 router.get('/:name', playlistController.genrePlaylist);
