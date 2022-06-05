@@ -57,9 +57,9 @@ class PlaylistController {
                         res.render('me/playlist', {
                             songs,
                             playlist: {
-                                user: mongooseToObject(req.user),
                                 name: req.params.name,
-                            }
+                            },
+                            user: mongooseToObject(req.user),
                         });
                     }
                 }
