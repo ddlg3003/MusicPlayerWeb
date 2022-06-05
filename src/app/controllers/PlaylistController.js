@@ -73,6 +73,15 @@ class PlaylistController {
             })
             .catch(next);
     }
+
+    // [PUT] /playlist/:id/:songid/remove
+    removeSong(req, res, next) {
+        Playlist.updateOne(
+            { _id: req.params.id },
+            { $pull: { content: req.params.songid }})
+            .then(() => res.json({"": ""}))
+            .catch(next) 
+    }
 }
 
 module.exports = new PlaylistController();

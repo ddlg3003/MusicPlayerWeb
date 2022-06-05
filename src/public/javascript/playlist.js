@@ -208,7 +208,7 @@ fetch(playlistApi)
                         }
 
                         if(e.target.closest('.option')) {
-                            // Xu ly option
+                            console.log("hihihaha")
                         }
                     }
                 }
