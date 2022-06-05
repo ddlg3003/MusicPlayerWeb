@@ -27,7 +27,8 @@
   width: 100%;
   max-width: 850px;
   border-bottom: 1px solid #ebebeb;
-  border-radius: 16px; }
+  border-radius: 16px;
+  z-index: 1; }
 
 /* HEADER */
 header {
@@ -126,7 +127,7 @@ header h2 {
   border-radius: 5px;
   box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1);
   position: sticky;
-  z-index: -1;
+  z-index: 0;
   top: 150px; }
 
 .song.active {
