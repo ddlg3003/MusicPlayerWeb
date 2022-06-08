@@ -46,7 +46,7 @@ class PlaylistController {
 
     // [GET] /playlist/:name
     genrePlaylist(req, res, next) {
-        Song.find({ name: req.params.name })
+        Song.find({ genre: req.params.name })
             .then(songs => {
                 songs = multipleMongooseToObject(songs);   
                 if (req.isAuthenticated()) {
